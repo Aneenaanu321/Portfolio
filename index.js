@@ -76,3 +76,27 @@ window.addEventListener('scroll', () => {
 document.querySelector('.contact-form')?.addEventListener('submit', e => {
   e.preventDefault();
 });
+
+const themeToggle = document.querySelector('.theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+
+  if (themeIcon) {
+    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  }
+
+  themeToggle?.setAttribute(
+    'aria-label',
+    theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+  );
+}
+
+themeToggle?.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+setTheme(document.documentElement.getAttribute('data-theme') || 'dark');

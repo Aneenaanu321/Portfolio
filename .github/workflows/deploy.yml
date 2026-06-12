@@ -27,7 +27,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir site
-          cp index.html styles.css index.js site/
+          cp index.html styles.css index.js favicon.svg site/
           cp ANEENA_ANTONY_Senior_Software_Engineer.pdf site/
 
       - name: Upload artifact
